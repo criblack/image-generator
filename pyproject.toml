@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "criblack-image-generate"
+version = "0.1.0"
+description = ""
+authors = ["Vitor <vitor036daniel@gmail.com>"]
+readme = "README.md"
+packages = [{include = "criblack_image_generate"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.88.0"
+python-dotenv = "^0.21.0"
+python-multipart = "^0.0.5"
+openai = "^0.25.0"
+pillow = "^9.3.0"
+uvicorn = "^0.20.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
