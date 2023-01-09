@@ -23,7 +23,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 @app.post("/")
-def generate_file(image: UploadFile, description: str = Form()):
+def generate_file(image: UploadFile):
     image_bytes = io.BytesIO()
     new_image = Image.open(image.file)
     if new_image.size[0] != new_image.size[1]:
@@ -31,9 +31,6 @@ def generate_file(image: UploadFile, description: str = Form()):
 
     new_image.save(image_bytes, format="PNG")
 
-    response = openai.Image.create_variation(
-        image=image_bytes.getvalue(),
-        prompt=description
-    )
+    response = openai.Image.create_variation(image=image_bytes.getvalue())
 
     return [image["url"] for image in response["data"]]
