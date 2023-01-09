@@ -31,6 +31,6 @@ def generate_file(image: UploadFile):
 
     new_image.save(image_bytes, format="PNG")
 
-    response = openai.Image.create_variation(image=image_bytes.getvalue())
+    response = openai.Image.create_variation(image=image_bytes.getvalue(), n=4)
 
     return [image["url"] for image in response["data"]]
